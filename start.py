@@ -3,7 +3,9 @@ from lister import Lister
 from time import sleep
 
 while True:
+    # Up to ten bots represents Twitch's maximum counted views per IP adress
     bots = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
     try:
         users = Lister().returnList()
     except:
@@ -22,4 +24,12 @@ while True:
             bots[userCount + 2] = TwitchJoinBot(user)
             userCount += 3
 
-    sleep(300)
+    # Waits 30 minutes to check for live again
+    # This is accomplished by closing all windows and reoping them
+    sleep(30 * 60) # (Minutes * 60 seconds for easy calculations)
+
+    # Quits and resets all 10 variables, doesn't actually reset for some reason though
+    for bot in bots:
+        if not isinstance(bot, str):
+            bot.quit()
+            bot = None
