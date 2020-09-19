@@ -23,6 +23,9 @@ while True:
             bots[userCount + 1] = TwitchJoinBot(user)
             userCount += 2
 
+        if userCount >= 2:
+            break
+
     # Waits 30 minutes to check for live again
     # This is accomplished by closing all windows and reoping them
     sleep(30 * 60) # (Minutes * 60 seconds for easy calculations)
