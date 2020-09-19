@@ -28,12 +28,12 @@ class TwitchJoinBot:
     # Does the actual checking to see if the account is live
     def checkLive(self):
         try:
-            offline = self.driver.find_element_by_xpath("//p[contains(text(), 'Offline')]")
-            print("Streamer is offline, closing window.")
-            return False
-        except NoSuchElementException:
+            offline = self.driver.find_element_by_xpath("//div[contains(@class, 'live-indicator-container')]")
             print("Streamer is online, leaving window open.")
             return True
+        except NoSuchElementException:
+            print("Streamer is offline, closing window.")
+            return False
 
     def quit(self):
         self.driver.quit() # Closes all windows associated with the driver, .close() would close just the current window
