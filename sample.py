@@ -1,5 +1,6 @@
 from main import TwitchJoinBot
 from lister import Lister
+from time import sleep
 
 try:
     users = Lister().returnList()
@@ -10,6 +11,8 @@ except:
 for user in users:
     bot = TwitchJoinBot(user)
     live = bot.checkLive()
+
+sleep(5)
 
 # Attempt to allocate up to 10 views per streamer
 
