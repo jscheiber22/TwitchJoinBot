@@ -22,9 +22,11 @@ class TwitchJoinBot:
         # COMMENT OUT THE ABOVE THREE LINES AND UNCOMMENT THIS ONE IF YOU WANT TO SEE THE BROWSER WINDOW
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
 
+        # Simply opens the window
+        self.driver.get(self.url)
+
     # Does the actual checking to see if the account is live
     def checkLive(self):
-        self.driver.get(self.url)
         try:
             offline = self.driver.find_element_by_xpath("//p[contains(text(), 'Offline')]")
             print("Streamer is offline, closing window.")
