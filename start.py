@@ -21,6 +21,8 @@ while True:
         else: # Other attempt failed so this one at least grants 2 :( views
             bots[userCount + 1] = TwitchJoinBot(user)
             userCount += 2
+
+        if userCount >= 2:
             break
 
     # Waits 30 minutes to check for live again
