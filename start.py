@@ -21,8 +21,7 @@ while True:
             userCount += 1
         else: # Other attempt failed so this one at least grants 3 views
             bots[userCount + 1] = TwitchJoinBot(user)
-            bots[userCount + 2] = TwitchJoinBot(user)
-            userCount += 3
+            userCount += 2
 
     # Waits 30 minutes to check for live again
     # This is accomplished by closing all windows and reoping them
