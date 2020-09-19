@@ -9,26 +9,11 @@ from time import sleep
 # Written by James Scheiber, 4am 9/19/2020 :)
 
 class TwitchJoinBot:
-    # Hardcoded list of user names and corresponding channel URLs for streamer
-    links = {
-        "me": {
-            "url" : "https://www.twitch.tv/chknngts"
-        },
-        "ryan": {
-            "url" : "https://www.twitch.tv/crimsoncali"
-        },
-        "onlinedude": {
-            "url" : "https://www.twitch.tv/trainwreckstv"
-        }
-    }
 
-    # Current default set to me
-    def __init__(self, name = "me"):
-        if name in self.links:
-            self.url = self.links[name]["url"]
-        else:
-            print("Not a known name.")
-            exit()
+    # Current default set to chkn.ngts
+    def __init__(self, url = "https://www.twitch.tv/chknngts"):
+        self.url = url
+
         # Adding the headless option allows the browser to open without a GUI. This makes the program far more user friendly.
         # chrome_options = Options()
         # chrome_options.add_argument("--headless")
@@ -43,6 +28,10 @@ class TwitchJoinBot:
         try:
             offline = self.driver.find_element_by_xpath("//p[contains(text(), 'Offline')]")
             print("Streamer is offline, closing window.")
-            self.driver.quit() # Closes all windows associated with the driver, .close() would close just the current window
+            return False
         except NoSuchElementException:
             print("Streamer is online, leaving window open.")
+            return True
+
+    def quit(self):
+        self.driver.quit() # Closes all windows associated with the driver, .close() would close just the current window
