@@ -1,5 +1,5 @@
 from main import TwitchJoinBot
-from lister import Lister
+from lazylister import Lister
 from time import sleep
 
 while True:
@@ -7,7 +7,7 @@ while True:
     bots = ["one", "two"]
 
     try:
-        users = Lister().returnList()
+        users = Lister(filePath = "list.txt").returnList()
     except:
         # Exceptions causing this one will be in lister or main, both of which should arleady output their errors
         exit()
