@@ -1,5 +1,5 @@
 from main import TwitchJoinBot
-from lazylister import Lister
+#from lazylister import Lister
 from time import sleep
 
 while True:
@@ -7,7 +7,10 @@ while True:
     bots = ["one", "two"]
 
     try:
-        users = Lister(filePath = "list.txt").returnList()
+        f = open('list.txt', 'r+')
+        users = f.readlines()
+        f.close()
+        #users = Lister(filePath = "list.txt").returnList()
     except:
         # Exceptions causing this one will be in lister or main, both of which should arleady output their errors
         exit()
@@ -27,6 +30,7 @@ while True:
 
     # Waits 30 minutes to check for live again
     # This is accomplished by closing all windows and reoping them
+    print('No sessions found. Waiting for 60 minutes.')
     sleep(30 * 60) # (Minutes * 60 seconds for easy calculations)
 
     # Quits and resets all 10 variables, doesn't actually reset for some reason though
