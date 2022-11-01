@@ -16,7 +16,7 @@ class TwitchJoinBot:
 
         # Adding the headless option allows the browser to open without a GUI. This makes the program far more user friendly.
         chrome_options = Options()
-#        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 
         # COMMENT OUT THE ABOVE THREE LINES AND UNCOMMENT THIS ONE IF YOU WANT TO SEE THE BROWSER WINDOW
